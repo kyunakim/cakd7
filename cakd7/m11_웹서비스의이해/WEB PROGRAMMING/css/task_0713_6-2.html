@@ -1,0 +1,60 @@
+<!-- 반응형 웹 패턴 4가지 경우를 구현하세요 p258~268 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pattern3</title>
+    <meta name="viewport" content="user-scalable-no,initial-scale=1,maximum-scale=1">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        body {
+            width:960px;
+            margin: 0 auto;
+            overflow:hidden;
+        }
+        #menu {
+            width:260px;
+            float:left;
+             /*float:right;*/
+        }
+
+        #section {
+            width:700px;
+            float:right;
+            /*float:left;*/
+        }
+        li {list-style:none;}
+
+        @media screen and (max-width: 767px){
+            body {width:auto}
+            #menu {width:auto; float:none;}
+            #section {width:auto;float:none;}
+        }
+    </style>
+</head>
+<body>
+    <div id="section">
+        <img src="thor.jpg" width="400px" height="550">
+        <h1>Thor: Love and Thunder</h1>
+        <h2>"신을 죽이는 자, 신이 상대한다!"</b></h2><br>
+        <h4>슈퍼 히어로 시절이여, 안녕!<br>이너피스를 위해 자아 찾기 여정을 떠난 천둥의 신 '토르'</h4>
+        <h4>그러나, 우주의 모든 신들을 몰살하려는 신 도살자 '고르'의 등장으로 '토르'의 안식년 계획은 산산조각 나버린다.</h4><br>
+        <h4>'토르'는 새로운 위협에 맞서기 위해,<br>
+        '킹 발키리', '코르그', 그리고 전 여자친구 '제인'과 재회하게 되는데,<br>
+        그녀가 묠니르를 휘두르는 '마이티 토르'가 되어 나타나 모두를 놀라게 한다.<br>
+        이제, 팀 토르는 '고르'의 복수에 얽힌 미스터리를 밝히고<br>
+        더 큰 전쟁을 막기 위한 전 우주적 스케일의 모험을 시작하는데...</h4><br>
+        <h3><b>7월, 우주 최고의 ‘갓’ 매치가 시작된다!</h3><br>
+    </div>
+    <div id="contents">
+        <ul>
+            <li>시놉시스</li>
+            <li>등장인물</li>
+            <li>줄거리</li>
+        </ul>
+    </div>
+</body>
+</html>

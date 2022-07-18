@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery Basic</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // 이벤트를 연결
+        $(document).ready(function(){
+            // img  태그의 src 속성을 추출
+            // 문서 객체의 속성을 조작할 때, attr() 메서드를 사용
+            var src = $('script').attr('src');
+
+            alert(src);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

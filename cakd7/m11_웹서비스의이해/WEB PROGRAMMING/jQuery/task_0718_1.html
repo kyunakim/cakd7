@@ -1,0 +1,29 @@
+<!-- 함수를 이용해 속성을 지정하는 사례를 작성해서 출력하세요. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery Basic</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // 이벤트를 연결
+        $(document).ready(function(){
+            //  함수를 이용해 속성을 지정
+            $('img').attr({
+                alt: 'thor - love and thunder',
+                src: function(index){
+                    // 변수 선언
+                    var size = (index+1) * 100;
+                    
+                    // 반환
+                    return 'thor.jpg' + size + 'x100';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <img>
+    <img>
+    <img>
+</body>
+</html>

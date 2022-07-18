@@ -1,0 +1,31 @@
+<!-- 함수를 이용해 스타일 속성을 지정한 사례를 작성하여 출력하세요. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery Basic</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // 이벤트를 연결
+        $(document).ready(function(){
+            // 문서 객체를 추가
+            var output = '';
+            for (var i =0; i <256; i++){
+                output += '<div></div>';
+            }
+            document.body.innerHTML = output;
+            // 스타일 적용
+            $('div').css({
+                float:'left',
+                margin:10,
+                width:10,
+                height:2,
+                backgroundColor:'black'
+                
+            });
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

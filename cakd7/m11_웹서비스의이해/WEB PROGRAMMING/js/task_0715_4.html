@@ -1,0 +1,22 @@
+<!-- 고전 이벤트를 사용한 사례를 작성하세요. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Traditional Event</title>
+    <script>
+        window.onload = function() {
+            var button = document.getElementById('button');
+
+            button.onclick = function() {
+                alert('thank you');
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id = 'button'>click me</button>
+    <button id = 'button'>클릭</button>
+    <!-- 고전 이벤트 모델(기본 이벤트 모델)은 이벤트 하나에 이벤트 리스너 하나만 연결할 수 있다.
+    첫 번째 클릭에 이벤트가 실행이 되고 두번째 클릭부터는 이벤트가 실행이 되지 않는다.  -->
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript Basic</title>
+    <script>
+        // 함수 선언
+        function callTenTimes(callback){
+            // 10회 반복
+            for (var i =0; i <10; i++){
+                callback(); // 매개변수로 전달된 함수 호출
+            }
+        }
+        // 변수 선언 10번 출력된다.
+        var callback = function() {
+            alert('함수 호출');
+        };
+        // 함수를 호출한다.
+        callTenTimes(callback);
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

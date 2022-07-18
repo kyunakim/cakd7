@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript Basic</title>
+    <script>
+        // Date 객체 선언 : 현재 시간 구하기
+        var date = new Date();
+        var hours = date.getHours();
+        console.log(hours)
+        
+        // 중첩 조건문 
+        if (hours < 8){
+            alert('일어나');
+        } else {
+            if (hours < 9) {
+                alert('화이팅');
+            } else {
+                if (hours < 12) {
+                    alert('졸지마');
+                } else {
+                    if (hours < 14) {
+                        alert('밥먹자');
+                    } else {
+                        if (hours < 17) {
+                            alert('졸지마');
+                        } else {
+                            if ( hours < 18) {
+                                alert('집가자');
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

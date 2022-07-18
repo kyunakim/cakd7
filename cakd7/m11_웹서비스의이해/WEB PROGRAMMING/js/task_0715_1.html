@@ -1,0 +1,29 @@
+<!-- name 속성으로 여러개 문서객체를 선택하는 사례를 작성하세요.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>getElementByName</title>
+    <script>
+        // 
+        window.onload = function(){
+         
+            // 문서 객체를 선택
+            var header = document.getElementsByName("icecream");
+            
+            // 문서 객체를 조작
+            for(var i=0; i<header.length; i++){
+                header[i].style.color = 'skyblue';
+                header[i].style.background ='pink';
+                header[i].style.textAlign = 'center';
+            };
+
+        };
+    </script>
+</head>
+<body>
+    <h1 name = "icecream">almond bon bon</h1>
+    <h1 name = "icecream">mint chocolate</h1>
+    <h1 name = "icecream">berry berry strawberry</h1>
+    <h1>vanila</h1>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!-- class 속성으로 여러개 문서객체를 선택하는 사례를 작성하세요.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>getElementByClassName</title>
+    <script>
+        // 
+        window.onload = function(){
+            
+            // 문서 객체를 선택
+            var header = document.getElementsByClassName("icecream");
+            
+            // 문서 객체를 조작
+            for(var i=0; i<header.length; i++){
+                header[i].style.color = 'chocolate';
+                header[i].style.background ='aquamarine';
+                header[i].style.textAlign = 'center';
+            }
+
+        };
+    </script>
+</head>
+<body>
+    <h1>mint chocolate</h1>
+    <h1 class = 'icecream'>mint chocolate</h1>
+    <h1>mint chocolate</h1>
+    <h1 class = 'icecream'>mint chocolate</h1>
+</body>
+</html>

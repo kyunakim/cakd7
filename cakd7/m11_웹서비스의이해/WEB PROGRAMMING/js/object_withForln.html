@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript Basic</title>
+    <script>
+        // 배열은 요소에 접근할 때 인덱스를 사용하지만 객체는 키를 사용한다.
+        // for (var 키 in 객체) {
+        //     문장
+        // }
+
+        // 객체를 선언
+        var product = {
+            제품명: '7D 건조 망고',
+            유형: '당절임',
+            성분: '망고, 설탕, 메타중아황산나트륨, 치자황색소',
+            원산지: '필리핀'
+        };
+        // 출력
+        for (var i in product){
+            alert(i +':'+product[i]);
+        }
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- p419 문서객체 추가하기 8개 사례를 작성하여 출력하세요. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery DOM</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // 이벤트 연결
+        $(document).ready(function(){
+            // 10회 반복
+            for (var i =0; i < 10; i++) {
+                // 문서 객체 생성
+                $('<h1>insertAfter + ' + i + '</h1>').css({
+                    backgroundColor: 'yellow',
+                    color:'skyblue'
+                }).insertAfter('body');
+                // 지정한 요소 뒷부분에 형제 내용을 삽입
+                // A.insertAfter(B) - B에 A를 추가
+            }
+        });
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

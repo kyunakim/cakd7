@@ -1,0 +1,74 @@
+<!-- p430 갤러리 전체 코드 완성. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Slider</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            //변수선언
+            var width = $('[data-role="slider"]').attr('data-width');
+            var height = $('[data-role="slider"]').attr('data-height');
+            var count = $('[data-role="slider"] div.item').length;
+
+            //스타일적용
+            $('[data-role="slider"]').css({
+                position: 'relative',
+                overflow: 'hidden',
+                width: width,
+                height: height
+            }).find('.container').css({
+                position:'absolute',
+                width:count * width,
+                overflow:'hidden'
+            }).find('.item').css({
+                width:width,
+                height:height,
+                float:'left'
+            });
+            
+            //변수선언
+            var currentPage = 0;
+            var changePage = function() {
+                $('[data-role="slider"]> .container').animate({
+                    left: -currentPage *width
+                },500);
+            };
+
+            //이벤트 연결
+            $('#left-button').click(function(){
+                if (currentPage >0){
+                    //왼쪽으로 이동
+                    currentPage = currentPage - 1;
+                    changePage();
+                }
+            });
+
+            $('#right-button').click(function(){
+                if (currentPage < count - 1) {
+                    //오른쪽으로 이동
+                    currentPage = currentPage + 1;
+                    changePage();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div data-role="slider" data-width="1000" data-height="500">
+        <div class="container">
+            <div class="item">
+                <img src="911white.jpg" alt="porsche911"id='img'>
+            </div>
+            <div class="item">
+                <img src="911red.jpg" alt="porsche911"id='img'>
+            </div>
+            <div class="item">
+                <img src="911blue.jpg" alt="porsche911"id='img'>
+            </div>
+        </div>
+    </div>
+    <button id="left-button">←</button>
+    <button id="right-button">→</button>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!-- p419 문서객체 추가하기 8개 사례를 작성하여 출력하세요. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery DOM</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // 이벤트 연결
+        $(document).ready(function(){
+            // 형제 요소 밖에 추가
+            $('.box1:first').before('<div class=box>앞</div>');
+            $('.box1:first').after('<div class=box>뒤</div>');
+            
+            
+        });
+
+        
+    </script>
+    <style>
+        .box {
+            width:100px;
+            height:100px;
+            background: yellow;
+            font-size:30px;
+            text-align: center;
+            
+        }
+    </style>
+</head>
+<body>
+    <h2>.before() / .after()</h2>
+    <div class="container">
+        <!-- before 추가구간 --><div class="box"><strong>1</strong></div>
+        <div class="box">2</div>
+        <div class="box">3</div> <!-- after 추가구간 -->
+    </div>
+</body>
+</html>

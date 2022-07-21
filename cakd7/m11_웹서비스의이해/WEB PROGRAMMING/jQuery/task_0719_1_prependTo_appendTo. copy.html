@@ -1,0 +1,38 @@
+<!-- p419 문서객체 추가하기 8개 사례를 작성하여 출력하세요. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery DOM</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // 이벤트 연결
+        $(document).ready(function(){
+            // 자식 요소를 불러와서 ()기준으로 이동
+            $('.box:nth-child(3)').prependTo('.container'); // (B)안으로 들어가서 맨 앞
+            $('.box:nth-child(2)').appendTo('.container'); // (B)안으로 들어가서 맨 뒤
+            
+        });
+        
+    </script>
+    <style>
+        .box {
+            width:100px;
+            height:100px;
+            background: skyblue;
+            font-size:30px;
+            text-align: center;
+            float:left;
+            
+            
+        }
+    </style>
+</head>
+<body>
+    <h2>.prependTo() / .appendTo()</h2>
+    <div class="container">
+        <div class="box"><strong>1</strong></div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+</body>
+</html>

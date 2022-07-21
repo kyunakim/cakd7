@@ -2,13 +2,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>jQuery Basic</title>
+    <title>Event Basic</title>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script>
-       
+        // 이벤트 연결
+        $(document).ready(function(){
+            // 이벤트 연결
+            $('button').click(function(){
+                // 간단한 효과 적용
+                $('#div1').fadeToggle('slow'); //slow : 600밀리초 속도
+                $('#div2').fadeToggle('4000');
+                $('#div3').fadeToggle('');
+
+            });
+        });
     </script>
 </head>
 <body>
-    
+    <button>Toggle Show button</button>
+    <p></p>
+    <div id="div1" style="width:80px;height:80px;background-color:red;"></div>
+    <div id="div2" style="width:80px;height:80px;background-color:yellow;"></div>
+    <div id="div3" style="width:80px;height:80px;background-color:green;"></div>
 </body>
 </html>

@@ -10,14 +10,17 @@
             $('#img').css({
                 width:500,
                 height:300,
+            }).on({ // 여러개 이벤트 한 번에 설정 가능
+                'click':function(){
+                    $(this).prop('src','911red.jpg');
+                },
+                mouseenter:function(){
+                    $(this).prop('src','911blue.jpg');
+                },
+                mouseleave:function(){
+                    $(this).prop('src','911white.jpg');
+                }
 
-                // 일반 이벤트 연결할 때 on() 메서드를 사용
-            }).on('click',function(){
-                $(this).prop('src','911red.jpg');
-            }).on('mouseenter',function(){
-                $(this).prop('src','911blue.jpg');
-            }).on('mouseleave',function(){
-                $(this).prop('src','911white.jpg');
             });
        });
     </script>

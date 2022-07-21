@@ -1,0 +1,39 @@
+<!-- p419 문서객체 추가하기 8개 사례를 작성하여 출력하세요. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery DOM</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // 이벤트 연결
+        $(document).ready(function(){
+            // 자식 요소 만들기
+            var box1 = $('.box:first');
+            box1.prepend('앞'); //안으로 들어가서 맨 처음
+            box1.append('뒤'); //안으로 들어가서 맨 뒤
+            
+        });
+
+        
+    </script>
+    <style>
+        .box {
+            width:100px;
+            height:100px;
+            background: yellow;
+            font-size:30px;
+            text-align: center;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <h2>.prepend() / .append()</h2>
+    <div class="container">
+        <div class="box"><!-- prepend 추가구간 --><strong>1</strong><!-- append 추가구간 --></div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+</body>
+</html>

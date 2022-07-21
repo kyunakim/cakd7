@@ -1,0 +1,32 @@
+<!-- p419 문서객체 추가하기 8개 사례를 작성하여 출력하세요. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery DOM</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // 이벤트 연결
+        $(document).ready(function(){
+            // 10회 반복
+            for (var i =0; i < 10; i++) {
+                // 문서 객체 생성
+                var $dynamic = $('<h1>append + ' + i + '</h1>')
+                .css({
+                    backgroundColor: 'skyblue',
+                    color:'yellow'
+                });
+                
+            
+                $('body').append($dynamic);
+                // 지정한 요소 마지막에 내용(객체)추가
+                // A.append(B) - A에 B를 추가
+            }
+        });
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

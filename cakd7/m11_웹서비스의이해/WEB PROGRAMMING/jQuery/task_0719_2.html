@@ -1,0 +1,39 @@
+<!-- p430 jquery 플러그인을 사용한 사례를 작성하여 출력하세요. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="js/jquery.catslider.js"></script>
+
+    <style>
+        .mi-slider {
+	        position: relative;
+	        margin-top: 30px;
+	        height: 490px;  
+        }
+    </style>
+    <script>
+        // 이벤트 연결
+        $(document).ready(function(){
+            // 문서 객체 생성
+            for (var i=0; i <100; i++){
+                $('<div></div>').addClass('box').css({
+                    width:100,
+                    height: Math.floor(Math.random() * 100) +50
+                }).appendTo('body');
+            }
+            // slider 플러그인 적용
+            $('#mi-slider').catslider({
+          
+            
+            
+            });
+        });
+            
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 초기화하기 -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family:'Times New Roman', Times, serif
+        }
+        a {text-decoration: none;}
+        img {border:0;}
+        li{list-style: none;}
+    </style>
+    <!-- 공통 구성하기 -->
+    <style>
+        .container {
+            margin-left:auto;
+            margin-right:auto;
+            padding-left:10px;
+            padding-right:10px;
+        }
+    </style>
+    <!-- 헤더 구성하기 -->
+    <style>
+        #main-header {
+            background: #f2e3c4;
+            color:#4a4339;
+            position: fixed;
+            top:0;
+            left:0;
+            height:30px;
+            width:100%;
+            padding: 10px 10px;
+            
+        }
+        #main-header h1 {
+            font-size:20px;
+            font-weight:normal;
+            line-height:25px;
+            color:#222;
+        }
+        #main-header ul {
+            background: #f2e3c4;
+        }
+        #main-header li {
+            margin-top:10px;
+            margin-bottom:10px;
+        }
+        #main-header li a{
+            color:#555;
+        }
+        #main-header li.active a{
+            color:black;
+            font-weight:800;
+        }
+        #main-header label {
+            text-align:center;
+            float:right;
+            width:40px;
+            height:27px;
+            line-height:27px;
+            color:#222;
+            border:1px solid #222;
+            border-radius:5px
+        }
+        #checkbox{
+            display:none;
+        }
+        #checkbox +nav{
+            display:block;
+        }
+        #checkbox:checked+nav{
+            display:none;
+        }
+    </style>
+    <!-- 본문과 푸터 -->
+    <style>
+        #main-content{
+            background-color:#81725f;
+            background-image:url("hotel.png");
+            background-repeat:no-repeat;
+            background-size: cover;
+            padding:100px 60px 100px;
+            
+        }
+        #main-content h1 {
+            text-align:center;
+            margin-bottom:20px;
+            color:white;
+            font-weight:400;
+        }
+        #main-content p{
+            color:#222;
+            text-align:center;
+            color:white;
+            line-height: 2;
+    
+        }
+        #sub-content{
+            padding-top:50px;
+        }
+        #sub-content h1 {
+            text-align:center;
+            padding-top: 30;
+        }
+        #sub-content h2 {
+            text-align:center;
+            color:#81725f;
+            font-size:17px;
+            padding-top:10px;
+        }
+        #sub-content p{
+            color:#555;
+            text-align: center;
+            line-height: 1.5;
+            padding-top:30px;
+            padding-bottom: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #sub-content img{
+            width:550px;
+            display:block;
+            margin:0px auto;
+            padding-top: 30px;
+        }
+        #main-footer{
+            padding-top:40px;
+        }
+        footer{
+            background:#f1ebd5;
+            color:#9c8d78;
+            font-size:12px;
+            text-align:center;
+            line-height:40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-header">
+        <header class="container">
+            <div>
+                <label for="checkbox">▼</label>
+                <h1>The Shilla SEOUL</h1>
+            </div>
+            <input id="checkbox" checked="checked" type="checkbox">
+            <nav>
+                <ul>
+                    <li><a href="#">객실찾기🔍</a></li>
+                    <li><a href="#">예약📅</a></li>
+                    <li class="active"><a href='#'>스페셜 오퍼</a></li>
+                    <li><a href="#">고객문의</a></li>
+                </ul>
+            </nav>
+        </header>
+
+    </div>
+    <div id="main-content">
+        <article class="container">
+            <h1>Urban Lifestyle Hotel</h1>
+            <p>한국의 전통미와 현대적 감각을 겸비하고 있는 세계 속의 명문호텔 서울신라호텔은 세계 최고의 어번(Urban)라이프 스타일 호텔로 고객들에게 최고급 Hospitality 서비스를 제공합니다.
+            </p>
+        </article>
+    </div>
+    <div id="sub-content">
+        <article class="container">
+            <h1 style="color:#116c75">Urban Island</h1>
+            <h2>Prestige moment with Urban Island</h2>
+            <img src="urban1.png"><img src="urban2.png">
+            <p>어번 아일랜드(Urban Island)는 '도심 속 휴식의 섬'컨셉의 야외 수영장입니다.<br>
+                서울 특급호텔 최초 온수풀, 자쿠지, 루프탑, 카바나 등 차원이 다른 아웃도어 라이프 스타일을 즐기실 수 있습니다.<br>
+                어번 아일랜드는 계절마다 색다른 테마로 방문하실 때마다 새로운 경험을 제공합니다.</p>
+            <br>
+            <h1 style="color:#c48e49">SHILLA SPA</h1>
+            <h2>Guerlain Spa</h2>
+            <img src="spa.png">
+            <p>파리 겔랑 본사의 노하우를 전수받은 전문가들이 제공하는 힐링 스파<br>
+                계절에 따라 변하는 남산의 아름다운 전경을 바라보며 도심 속 진정한 휴식을 즐겨보세요.</p>
+            <br>
+            <h1 style="color:#e0b965">Jeju Apple Mango Bingsu</h1>
+            <h2>The Library(1F)</h2>
+            <img src="bingsu.png">
+            <p>더 라이브러리가 제주 애플망고 빙수를 선보입니다.<br>
+                눈꽃처럼 곱고 부드러운 우유 얼음 위에 은은한 사과 향의 제주산 애플망고를 풍성하게 올려낸<br>
+                더 라이브러리의 시그너처 디저트를 즐겨보시기 바랍니다.</p>
+            <br>
+            <h1 style="color:#bb884f">Rich in Flaver</h1>
+            <h2>PASTRY BOUTIQUE(1F)</h2>
+            <img src="cake.png">
+            <p>은은한 사과향이 일품인 제주산 애플망고를 촉촉한 시트 위에 풍성하게 올린 애플망고 쇼트케이크를 선보입니다.<br>
+                부드러운 식감과 향긋한 풍미가 매력적인 패스트리 부티크의 시그너처 케이크를 즐겨보시기 바랍니다.</p>
+        </article>
+    </div>
+    <div id="main-footer">
+        <footer class="container">
+            <div>
+                ⓒHOTEL SHILLA All rights reserved.</div>
+        </footer>
+    </div>
+</body>
+</html>

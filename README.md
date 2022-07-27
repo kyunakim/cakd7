@@ -1,1 +1,1 @@
-# kyuna-archive
+# 강의

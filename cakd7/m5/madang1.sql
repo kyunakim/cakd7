@@ -86,7 +86,9 @@ GROUP BY custid;
 -- 단, 두권 이상 구매한 고객만 구하세요.
 SELECT custid, COUNT(*) AS "총 수량"
 FROM orders
-GROUP BY custid ORDER BY custid;
+WHERE saleprice >= 8000
+GROUP BY custid 
+HAVING count (*) >= 2;
 
 -- 두 테이블 공통점이 있으면 결합 가능
 SELECT * FROM customer;
@@ -140,28 +142,41 @@ FROM book
 WHERE price = (SELECT MAX(price) FROM book);
 
 --[과제_0930_2] 도서를 구매한 적 있는 고객의 이름을 검색
-SELECT customer.name
-FROM customer, orders
-WHERE customer.custid = orders.custid
-GROUP BY customer.name;
+SELECT name
+FROM customer
+WHERE custid IN (SELECT custid FROM orders);
 
 --[과제_0930_3] 대한미디어에서 출판한 도서를 구매한 고객의 이름을 출력
-SELECT customer.name
-FROM customer, book, orders
-WHERE book.bookid = orders.bookid
-and customer.custid = orders.custid
-AND book.publisher = '대한미디어';
+SELECT name
+FROM customer
+WHERE custid IN (SELECT custid FROM orders WHERE bookid IN(SELECT bookid FROM book WHERE publisher='대한미디어'));
 
 --[과제_0930_4] 출판사별로 출판사의 평균 도서 가격보다 비싼 도서를 출력
-SELECT name
-FROM book
-WHERE AVG(price)
-AND price > AVG(price)
+SELECT b1.bookname
+FROM book b1
+WHERE b1.price > (SELECT AVG(b2.price) FROM book b2 WHERE b2.publisher=b1.publisher);
 
+SELECT *
+FROM book
 
 --[과제_0930_5] 도서를 주문하지 않은 고객의 이름을 출력
+SELECT name
+FROM customer
+MINUS
+SELECT name
+FROM customer
+WHERE custid IN(SELECT custid FROM orders);
+
+
+
+SELECT C.name
+FROM orders O, customer C
+WHERE C.custid NOT IN (SELECT custid FROM orders)
+GROUP BY C.name;
 
 --[과제_0930_6] 주문이 있는 고객의 이름과 주소를 출력
+SELECT name, address FROM customer
+WHERE custid IN (SELECT custid FROM orders);
 
 
 --DDL
@@ -175,3 +190,57 @@ PRIMARY KEY (bookid));
 DESC newbook;
 
 DROP TABLE newbook;
+
+CREATE TABLE newcustomer(
+custid NUMBER PRIMARY KEY,
+name VARCHAR2(40),
+address VARCHAR2(40),
+phone VARCHAR2(30));
+
+DESC newcustomer;
+DESC orders;
+CREATE TABLE neworders(
+orderid NUMBER,
+custid NUMBER NOT NULL,
+bookid NUMBER NOT NULL,
+saleprice NUMBER,
+orderdate DATE,
+PRIMARY KEY(orderid),
+FOREIGN KEY(custid) REFERENCES newcustomer(custid) ON DELETE CASCADE);
+
+DESC neworders;
+
+CREATE TABLE newbook(
+bookid NUMBER PRIMARY KEY,
+bookname VARCHAR2(20) NOT NULL,
+publisher VARCHAR2(20) UNIQUE,
+price NUMBER DEFAULT 10000 CHECK(price>1000));
+
+DESC newbook;
+ALTER TABLE newbook ADD isbn VARCHAR2(15);
+
+--과제_1004_1. newbook 테이블의 isbn 속성을 삭제하세요.
+ALTER TABLE newbook DROP COLUMN isbn;
+--과제_1004_2. newbook 테이블의 기본키를 삭제한 후 다시 bookid 속성을 기본키로 변경하세요.
+ALTER TABLE newbook DROP primary key;
+ALTER TABLE newbook ADD primary key(bookid);
+--과제_1004_3. newbook 테이블을 삭제하세요.
+DELETE TABLE newbook;
+
+SELECT * FROM customer;
+--Q. CUSTOMER 테이블에서 고객번호가 5인 고객의 주소를 "대한민국 부산"으로 변경하세요.
+UPDATE customer
+SET address = '대한민국 부산'
+WHERE custid =5;
+
+SELECT * FROM customer;
+--Q. CUSTOMER 테이블에서 박세리 고객의 주소를 김연아 고객의 주소로 변경
+UPDATE customer
+SET address = (select address from customer where name = '김연아')
+WHERE custid = 5;
+
+--Q. CUSTOMER 테이블에서 고객번호가 5인 고객을 삭제한 후 결과를 확인
+DELETE customer
+WHERE custid = 5;
+
+SELECT * FROM customer;

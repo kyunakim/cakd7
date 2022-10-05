@@ -102,3 +102,59 @@ WHERE cs.custid=o.custid
 GROUP BY cs.name;
 
 --과제_1004_9. lmembers 데이터를 고객별로 속성(성별,나이,거주지역) 구매합계(반기별), 평균구매(반기별), 구매빈도(반기별)를 출력
+SELECT * FROM DEMO;
+
+SELECT * FROM PURPRD;
+
+--구매합계(분기별), 평균구매(분기별), 구매빈도(분기별)
+SELECT SUBSTR(purdate,1,4) 년도, CEIL(SUBSTR(purdate,5,2)/3) 분기, SUM(puramt) 구매합계, ROUND(AVG(puramt),1) 평균구매, COUNT(puramt) 구매빈도
+FROM PURPRD
+GROUP BY SUBSTR(purdate,1,4), CEIL(SUBSTR(purdate,5,2)/3)
+ORDER BY SUBSTR(purdate,1,4), CEIL(SUBSTR(purdate,5,2)/3);
+
+--구매합계(반기별), 평균구매(반기별), 구매빈도(반기별)
+SELECT SUBSTR(purdate,1,4) 년도, CEIL(SUBSTR(purdate,5,2)/6) 분기, SUM(puramt) 구매합계, ROUND(AVG(puramt),1) 평균구매, COUNT(puramt) 구매빈도
+FROM PURPRD
+GROUP BY SUBSTR(purdate,1,4), CEIL(SUBSTR(purdate,5,2)/6)
+ORDER BY SUBSTR(purdate,1,4), CEIL(SUBSTR(purdate,5,2)/6);
+
+
+--10/05
+select * from customer;
+select * from orders;
+
+select c.name, sum(o.saleprice)
+from orders o, customer c
+where c.custid = o.custid(+)
+group by c.name;
+
+--Q. NULL을 0으로 컬럼명을 고객별 판매액으로 수정
+SELECT C.name, NVL(SUM(O.saleprice),0) "고객별 판매액"
+FROM orders O, customer C
+WHERE C.custid = O.custid(+)
+GROUP BY C.name;
+
+--View는 가상의 테이블이라고 하며 데이터는 없고 SQL만 저장되어 있는 Object
+--View는 기본 테이블이나 뷰를 삭제하게 되면 해당 데이터를 기초로 한 다른 뷰들이 자동으로 삭제되고 ALTER 명령을 사용할 수 없다.
+--내용을 수정하기 위해서는 DROP & CREATE를 반복하여야 하며 원본 이름으로 생성할 수 없다.
+create view vw_customer
+as select *
+from customer
+where address like '%대한민국%';
+
+select * from vw_customer;
+
+--Q. Orders 테이블에서 고객이름과 도서이름을 바로 확인할 수 있는 뷰를 생성한 후
+--김연아 고객이 구입한 도서의 주문번호, 도서이름, 주문액을 출력
+CREATE VIEW vw_orders
+AS SELECT customer.name, orders.orderid, book.bookname, orders.saleprice
+FROM customer, book, orders
+WHERE book.bookid = orders.bookid and orders.custid = customer.custid;
+
+SELECT
+    *
+FROM vw_orders
+WHERE name = '김연아';
+
+--Q. 앞서 생성한 뷰를 vw_customers를 삭제
+DROP VIEW vw_orders;

@@ -68,7 +68,7 @@ select last_name, hire_date, trunc(months_between (sysdate, hire_date)) 근속월수
 from employees;
 
 --과제_1005_4. 입사일 6개월 후 첫번째 월요일을 last_name별로 출력
-select last_name, hire_date, next_day((add_months(hire_date,6)),2) "입사일 6개월 후 첫번째 월요일"
+select last_name, hire_date, next_day(add_months(hire_date,6),'월요일') "입사일 6개월 후 첫번째 월요일"
 from employees;
 
 --과제_1005_5. job_id별로 연봉합계 연봉평균 최고연봉 최저연봉 출력
@@ -80,15 +80,17 @@ max(salary) 최고연봉,
 min(salary) 최저연봉
 from employees
 group by job_id
-having avg(salary) >=5000 --평균 급여 5000이상만 표시
-order by avg(salary) desc; --연봉평균 기준 내림차순으로 정렬
+having avg(salary) >=5000--평균 급여 5000이상만 표시
+order by avg(salary) desc;--연봉평균 기준 내림차순으로 정렬
 
 --과제_1005_6. 사원번호가 110인 사원의 부서명을 출력
 select * from employees;
 
-select department_id 부서명
-from employees
-where employee_id =110;
+SELECT DEPARTMENT_NAME
+FROM EMPLOYEES,DEPARTMENTS
+WHERE employees.department_id = departments.department_id(+)
+AND employees.employee_id=110;
+
 
 --과제_1005_7. 사번이 120번인 직원의 사번, 이름, 업무(job_id), 업무명(job_title)을 출력
 select * from employees;
@@ -105,6 +107,8 @@ where employee_id =120;
     --salary > 5000 then '과장'   
     --salary > 3000 then '대리'
     --나머지 '사원'
+
+
 select employee_id 사번, last_name 이름,
     case when e.salary > 20000 then '대표이사'
         when e.salary > 15000 then '이사'
@@ -115,6 +119,15 @@ select employee_id 사번, last_name 이름,
     end as 직급
 from employees e;
 
+SELECT employee_id, last_name, CASE WHEN SALARY > 20000 THEN '대표이사'
+    WHEN SALARY > 15000 THEN '이사'
+    WHEN SALARY > 10000 THEN '부장'
+    WHEN SALARY > 5000 THEN '과장'
+    WHEN SALARY > 3000  THEN '대리'
+    ELSE '사원' END 직급 
+FROM employees;
+
+
 --과제_1005_9. employees 테이블에서 employee_id와 salary만 추출해서 employee_salary 테이블을 생성하여 출력
 create table employee_salary
 as select employee_id, salary
@@ -124,19 +137,29 @@ select * from employee_salary;
 select * from employees;
 
 --과제_1005_10. employee_salary 테이블에 first_name, last_name 컬럼을 추가한 후 name으로 변경하여 출력
-alter table employee_salary add first_name varchar(2);
-alter table employee_salary add last_name varchar(2);
+alter table employee_salary
+add first_name varchar2(20)
+add last_name varchar2(20);
 
 --alter table employee_salary drop column first_name;
 --alter table employee_salary drop column last_name;
 
-select first_name||' '||last_name as name
-from employee_salary;
+update employee_salary es
+set first_name=
+(select first_name from employees e where es.employee_id=e.employee_id),
+last_name = (select last_name from employees e where es.employee_id = e.employee_id);
 
-create or replace view employee_salary
-as select first_name||' '||last_name as name
-from employees;
+select * from employee_salary;
 
+select employee_id,salary,first_name||' '||last_name name from employee_salary;
+
+--drop table employee_salary;
+
+--select first_name||' '||last_name as name from employee_salary;
+
+--create or replace view employee_salary
+--as select first_name||' '||last_name as name
+--from employees;
 
 --과제_1005_11. employee_salary 테이블의 employee_id에 기본키를 적용하고 constraint_name을 ES_PK로 지정 후 출력
 ALTER TABLE EMPLOYEE_SALARY 
@@ -146,3 +169,5 @@ PRIMARY KEY (EMPLOYEE_ID);
 --과제_1005_12. employee_salary 테이블의 employee_id에서 contraint_name을 삭제 후 삭제 여부를 확인
 ALTER TABLE EMPLOYEE_SALARY
 DROP CONSTRAINT ES_PK;
+
+select * from all_constraints where table_name = 'employee_salary';
